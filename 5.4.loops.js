@@ -82,4 +82,19 @@ for (let [key, value] of m) {
     console.log(value);
 }
 
-// async iteration with for/await
+// async iteration with for/await - variant of for/of loop and works with asynchronous iterators
+
+// Read chunks from an asynchronously iterable stream and print them out 
+async function printStream(stream) {
+    for await (let chunk of stream) {
+        console.log(chunk);
+    }
+}
+
+// for/in - works with objects after the in operator
+
+/*
+note - the for/in does not enumerate properties whose names are symbols
+*/
+
+
