@@ -23,5 +23,3 @@ Number.isNaN()
 // class declarations
 
 // code in ES6 is automatically strict
-
-// prefer compound expression export default to export a single value of an Module instead of exporting the entire module ??NOT-SURE??
