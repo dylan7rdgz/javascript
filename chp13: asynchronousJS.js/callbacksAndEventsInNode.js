@@ -16,6 +16,9 @@ fs.readFile("config.json", "utf-8", (err, text) => {
     // In either case, we can now start running the program
     startProgram(options);
 });
+function startProgram(options) {
+    console.log("The program has started.")
+}
 
 // Example #2 - event-based api's - two layers of asynchronous code handled with event listeners
 
@@ -28,20 +31,30 @@ function getText(url, callback) {
     // Start an HTTP GET request for the URL
     request = https.get(url);
     // Register a function to handle the "response" event.
-    request.on("response", response => {
+
+    request.on("response", (response) => {
+
+        // throw new Error('Over consumption of Memory');
+
         // The response event means that response headers have been received
         let httpStatus = response.statusCode;
         // The body of the HTTP response has not been received yet.
         // So we register more event handlers to to be called when it arrives.
         response.setEncoding("utf-8"); // We're expecting Unicode text
         let body = ""; // which we will accumulate here.
+
         // This event handler is called when a chunk of the body is ready
-        response.on("data", chunk => { body += chunk; });
+        response.on("data", chunk => 
+            {
+                console.log(typeof chunk);
+                 body += chunk; 
+            }
+        );
         // This event handler is called when the response is complete
         response.on("end", () => {
-            if (httpStatus === 200) { // If the HTTP response was good
-                callback(null, body); // Pass response body to the callback [WHICH WILL PROBABLY DO SOME POST PROCESSING...]
-            } else { // Otherwise pass an error
+            if (httpStatus === 200) { 
+                callback(null, body); // do some postprocessing
+            } else { 
                 callback(httpStatus, null);
             }
         });
@@ -51,3 +64,16 @@ function getText(url, callback) {
         callback(err, null);
     });
 }
+
+// NOTE* - using a wrapper function only to understand how the call stack works
+function getTextWrapper() {
+    try {
+        getText("https://fiddle.jshell.net/robots.txt", function() {console.log("finally got some text")});
+    } catch (e) {
+        console.log("MY HANDLED ERR: ", e); 
+    }
+    console.log("next line of code executing")
+}
+
+getTextWrapper()
+console.log("Executed getTextWrapper")
