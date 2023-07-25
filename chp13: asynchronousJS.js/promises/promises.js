@@ -5,9 +5,10 @@ function getJSON(url) {
     // ! What if we throw an error 
     // ! ex: throw new Error('The internet connection breaks while getting the data from the server hosted on url.') 
     // ! PROBLEM* - A: the problem here is that the error is not CATCH-ABLE
+    return fetch(url);
 }
 
-getJSON(url) // A promise object is already created and is present in memory
+getJSON("https://fiddle.jshell.net/robots.txt") // A promise object is already created and is present in memory
     .then(jsonData => { // ? when the asynchronous computation completes normally, it passes its result to the first argument of then
                 // The Asynchronous output is dealt with here
 
@@ -23,7 +24,7 @@ getJSON(url) // A promise object is already created and is present in memory
 
 
     }, 
-    handleProfileError // ! SOLUTION* - A: the promise based specification is more intelligent and can intercept/catch errors 
+    // handleProfileError // ! SOLUTION* - A: the promise based specification is more intelligent and can intercept/catch errors 
 ).then(() => {
     // each then is invoked only once
 }).then(() => {
@@ -31,10 +32,24 @@ getJSON(url) // A promise object is already created and is present in memory
 })
 
 // ! SOLUTION* - B: A MORE IDIOMATIC APPROACH to solve problem B
-
+/*
 get("https://fiddle.jshell.net/robots.txt")
     .then(displayedUserProfile)
     .catch(handleProfileError)
-    
+*/  
 
 // Deeper understanding by breaking the chaining of then
+
+function c1(response) {
+    let p4 = response.json(); // Generation of a fourth promise.
+    
+    return p4;
+}
+
+function c2(profile) {
+    displayUserProfile(profile);
+}
+
+let p1 = fetch("https://fiddle.jshell.net/robots.txt");
+let p2 = p1.then(c1);
+let p3 = p2.then(c2);
