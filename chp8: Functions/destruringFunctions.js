@@ -28,11 +28,28 @@ function vectorMultiply({ x, y, z = 0 }, scalar) {
 vectorMultiply({ x: 1, y: 2 }, 2); // => { x: 2, y: 4, z: 0 }
 
 
-//^ EX*
+//^ EX* - "rest" parameter when we destructure an Array 
 function f([x, y, ...coords], ...rest) {
     return [x + y, ...rest, ...coords]; // Note: spread operator here
 }
 f([1, 2, 3, 4], 5, 6); // => [3, 5, 6, 3, 4]
+
+
+//^ EX* - "rest" parameter when we destructure an Object 
+// Multiply the vector {x, y} or {x, y, z} by a scalar value, retain other props
+function vectorMultiply({ x, y, z = 0, ...props }, scalar) {
+    return { x: x * scalar, y: y * scalar, z: z * scalar, ...props };
+}
+vectorMultiply({ x: 1, y: 2, w: -1 }, 2); // => { x: 2, y: 4, z: 0, w: -1 }
+
+// Multiply the vector {x, y} or {x, y, z} by a scalar value, retain other props
+function vectorMultiply({ x, y, z = 0, ...props }, scalar) {
+    return { x: x * scalar, y: y * scalar, z: z * scalar, ...props };
+}
+vectorMultiply({ x: 1, y: 2, w: -1 }, 2); // => { x: 2, y: 4, z: 0, w: -1 }
+
+
+
 
 //& UC*:
 function arraycopy({ from, to = from, n = from.length, fromIndex = 0, toIndex = 0 }) {
@@ -42,5 +59,15 @@ function arraycopy({ from, to = from, n = from.length, fromIndex = 0, toIndex = 
 }
 let a = [1, 2, 3, 4, 5], b = [9, 8, 7, 6, 5];
 arraycopy({ from: a, n: 3, to: b, toIndex: 4 }); // => [9, 8, 7, 6, 1, 2, 3, 4, 5]
+
+// Consider graphics code that represents circles as objects with x, y, radius, and color properties,
+// where the color property is an array of red, green, and blue color components.
+// You might define a function that expects a single circle object to be passed to it
+// but destructures that circle object into six separate parameters:
+
+function drawCircle({ x, y, radius, color: [r, g, b] }) {
+    // Not yet implemented
+}
+
 
 
