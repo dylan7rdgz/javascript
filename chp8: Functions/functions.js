@@ -1,3 +1,4 @@
+'use strict'
 // Write functions to return a result a result based on the function parameters where ever possible
 
 // How is a function invoked through an object?
@@ -12,12 +13,14 @@ const car = {
 car.startEngine(); // Invoked on the "car" object
 
 const calculator = {
-    add: function(a, b) {
-      return a + b;
+    operand1: 1,
+    operand2: 1,
+    add() {
+      this.result = this.operand1 + this.operand2;
     }
 };
   
-const result = calculator.add(3, 5); // Invoked through the "calculator" object
+const result = calculator.add(); // Invoked through the "calculator" object
 
 // In Javascript functions are objects and they can be manipulated by programs.
 
@@ -63,7 +66,12 @@ console.log(f(5))
 
 let tensquared = (
     function(x) {
-        const a = 0; // NOTE: its own invocation context is defined (does this point to it??)
+        const a = 0; 
+        /*
+         NOTE: its own invocation context is defined (does this point to it??)
+         For function invocation in non-strict mode, the invocation context (the this value) is the global object.
+         In strict mode, however, the invocation context is undefined.
+        */
         return x*x;
     }(10)
 );
@@ -72,6 +80,42 @@ let tensquared = (
 
 const a = 10;
 let tensquaredd = (x => {
-    return x*x // NOTE: 1. this refers to the global context. 2. Arrow functions do not have a prototype property and hence they cannot be used as constructor function for newly created classes
+    /*
+        NOTE: 1. this refers to the global context. 2. Arrow functions do not have a prototype property and hence they cannot be used as constructor function for newly created classes
+        functions defined using arrow functions always "inherit"
+        the this value that is in effect where they are defined
+    */
+    return x*x 
 })(a);
 console.log(tensquaredd);
+
+//? Functions written to be invoked as functions (not as methods) do not typically use the this keyword at all
+//? The keyword can however be used to determine whether we are in strict mode.
+const strict = (function() {return !this;}());
+
+const calculatorr = {
+    operand1: 1,
+    operand2: 1,
+    add() {
+      this.result = this.operand1 + this.operand2; //* METHOD INVOCATION is deiiferent from REGULAR FUNCTION INVOCATION IN ONE IMP WAY: this refers to the object in which the function is defined 
+    }
+};
+  
+const resultt = calculatorr.add(); 
+
+let o = {
+    m: function() { // method m of the object
+        let self = this; // save the this value in a variable
+        this === o // => true: this is the object o
+        f(); // now call the helper nested function
+
+        function f() {
+            this === o // => this is global or undefined (this is a flaw in the JS language)
+            self === o // => self is the outer this value. Capturing the this value in self is essential if we want to use it in the nested func. 
+        }
+
+    }
+};
+console.log(o.m)
+
+

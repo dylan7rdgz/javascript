@@ -29,3 +29,7 @@ Number.isNaN()
 // functions expressions within loops, blocks, etc
 
 // ES2020: COnditional function invocation f?.(x). NOTE the dot.
+
+// default value for function parameters
+
+// rest parameters f(a, ...rest) [variadic/variable arity/vararg functions]
