@@ -23,3 +23,9 @@ Number.isNaN()
 // class declarations
 
 // code in ES6 is automatically strict
+
+// arrow functions
+
+// functions expressions within loops, blocks, etc
+
+// ES2020: COnditional function invocation f?.(x). NOTE the dot.
