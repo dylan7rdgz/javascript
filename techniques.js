@@ -30,3 +30,32 @@ function benchmark(n) {
 // Now invoke the timed version of that test function
 timed(benchmark)(1000000); // => 500000500000; this is the sum of the numbers
 
+// Replace the method named m of the object o with a version that logs messages "before and after" invoking the original method.
+function trace(o, m) {
+    let original = o[m]; // Remember original method in the closure.
+    o[m] = function(...args) { // Now define the new method.
+        console.log(new Date(), "Entering:", m); // Log message.
+        let result = original.apply(this, args); // Invoke original.
+        console.log(new Date(), "Exiting:", m); // Log message.
+        return result; // Return result.
+    };
+}
+
+// Define an object with a method
+const myObject = {
+    sayHello(name) {
+        return `Hello, ${name}!`;
+    }
+};
+
+// Apply the trace function to modify the object's method
+trace(myObject, "sayHello");
+
+// Call the modified method, which will log messages before and after invoking the original method
+const result = myObject.sayHello("Alice");
+
+// Output will show the entering and exiting messages along with the result
+console.log("type of result: ", typeof result);
+
+
+
