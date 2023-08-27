@@ -44,7 +44,7 @@ for (let k of Object.keys(o)) {
 console.log("Keys of the object concatenated as a string: ", keys);
 console.log("for/of on strings: ")
 
-// IV* - unique characters
+//? IV* - unique characters
 let frequency = {};
 for (let letter of "mississippi") {
     if (frequency[letter]) {

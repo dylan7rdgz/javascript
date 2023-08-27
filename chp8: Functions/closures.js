@@ -122,3 +122,5 @@ let funcs3 = constfuncs3();
 console.log(funcs[5]()); // => 10; Why doesn't this return 5?
 console.log(funcs[3]()); // => 10; Why doesn't this return 5?
 
+//? IV* - Drawback of closures
+//! CO*

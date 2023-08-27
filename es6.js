@@ -28,8 +28,12 @@ Number.isNaN()
 
 // functions expressions within loops, blocks, etc
 
-// ES2020: COnditional function invocation f?.(x). NOTE the dot.
+// ES2020: Conditional function invocation f?.(x). NOTE the dot.
 
 // default value for function parameters
 
 // rest parameters f(a, ...rest) [variadic/variable arity/vararg functions]
+
+// ES6: Set and Map classes
+
+
