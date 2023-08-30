@@ -36,4 +36,6 @@ Number.isNaN()
 
 // ES6: Set and Map classes
 
+// new ES6 Syntax for generators (the yield statement and yield*)
+
 

@@ -46,7 +46,9 @@ class Range {
           return next <= last
             ? { value: next++ }
             : { done: true };
-        }
+        },
+        //! CO* - As a convenience we make the iterator itself iterable.
+        [Symbol.iterator()]() { return this; }
       };
     }
 }
@@ -78,7 +80,7 @@ function map(iterable, f) {
 
 
       },
-      next() {
+      next() { 
         let v = iterator.next();
         if (v.done) {
           return v;
@@ -104,29 +106,59 @@ for(let result = iterator2.next(); !result.done; result = iterator2.next()) {
 // const result = [...squaredRange]; // Creates an array of squared
   
 
-// function filter(iterable, predicate) {
-//     let iterator = iterable[Symbol.iterator]();
+function filter(iterable, predicate) {
+    let iterator = iterable[Symbol.iterator]();
   
-//     return {
-//       [Symbol.iterator]() {
-//         return this;
-//       },
-//       next() {
-//         for (;;) {
-//           let v = iterator.next();
-//           if (v.done || predicate(v.value)) {
-//             return v;
-//           }
-//         }
-//       }
-//     };
-// }
+    return {
+      [Symbol.iterator]() {
+        return this;
+      },
+      next() {
+        for (;;) {
+          let v = iterator.next();
+          if (v.done || predicate(v.value)) {
+            return v;
+          }
+        }
+      }
+    };
+}
   
-// // Example usage
-// const filteredRange = filter(new Range(1, 10), x => x % 2 === 0);
-// const result2 = [...filteredRange]; // Creates an array of even numbers from the range
+// Example usage
+const filteredRange = filter(new Range(1, 10), x => x % 2 === 0);
+const result2 = [...filteredRange]; // Creates an array of even numbers from the range
 
-// console.log(result2); // Logs: [2, 4, 6, 8, 10]
+console.log(result2); // Logs: [2, 4, 6, 8, 10]
   
+
+// ~UC* - imp - lazily iterate the words of a string without keeping all of them in memory at once 
+// ~UC* - imp - compare this with s.split("")
+function words(s) {
+    var r = /\s+|$/g; // Match one or more spaces or end
+    r.lastIndex = s.match(/[^ ]/).index; // Start matching at first non-space
+  
+    return {
+      [Symbol.iterator]() { // This makes us iterable
+        return this;
+      },
+      next() { // This makes us an iterator
+        let start = r.lastIndex;
+  
+        let match = r.exec(s); // match the next word boundary
+        if (match) { // if we found one return the word
+          return { value: s.substring(start, match.index) };
+        }
+  
+        return { done: true }; // Otherwise, say that we're done
+      }
+    };
+  }
+  
+// Example usage
+const wordIterable = words(" abc def ghi! ");
+const result = [...wordIterable]; // Creates an array of words
+
+console.log(result); // Logs: ["abc", "def", "ghi!"]
+
 
 
