@@ -46,6 +46,10 @@ console.log(undefs.length);
 
 // Why passing a second argument to Array.from is more optimal than the array map() method. 
 
+// Difference between a .forEach() method of a Set and that of an array?
+// Why is the contract of .forEach() method of Map and that of an Array the same?
+
+
 
 
 

@@ -12,10 +12,12 @@ class Point {
     }
 }
 
-let pt = new Point(1, 1); // everytime that your create an instance of a class with new, you are creating an object that inherits properties from a prototype object.
+let pt = new Point(1, 1); // every time that your create an instance of a class with new, you are creating an object that inherits properties from a prototype object.
 console.log("distanceFromOrigin: ", pt.distance()); // distance is a property present in the prototype object: distance is the property k and the anonymous function would become the value
 
-// NOTE: Remember, almost all objects have a prototype but most do not have a property named prototype. Javascript works even if you can't access the prototype object directly
+//! NOTE: Remember, almost all objects have a prototype 
+//! but most do not have a property named prototype. 
+//! Javascript works even if you can't access the prototype object directly
 
 // DEMO* - querying for values
 let o = {}; // o only inherits <Object> as prototype
@@ -29,7 +31,7 @@ console.log("--->", q.x + q.y); // try to query x and the value will be searched
 
 
 
-// DEMO* - assigning to a property
+//^ DEMO* - assigning to a property
 
 /**********************/
 q.y = 2;
@@ -39,13 +41,13 @@ console.log("property y in p is untouched (prototypes of an object remain unaffe
 
 /**********************/
 
-/*
- UC* - The fact that inheritance occurs when querying properties 
- but not when setting them is key feature of Javascript because it allows
- us to selectively override inherited properties
+
+//~ UC* - The fact that inheritance occurs when querying properties 
+//~ but not when setting them is key feature of Javascript because it allows
+//~ us to selectively override inherited properties
 
 
-*/
+
 
 /*
  NOTE* - there is one exception to the RULE* that a property assignment either fails or creates or sets a property in the original object
