@@ -1,5 +1,7 @@
 // Explain something about my current architecture; I started speaking about my products at Nium, thinking payments is very close to HDFC Ergo domain.
     // Do not answer what the interview would like; answer what the interviewer asks
+// What is serverless? - I should know how serverless is different from AWS
+// Secret keys - Hwo does the controller I write pick up secret keys from AWS
 
 // What if many users upload multiple files at the same time?
 // Will node.js single threaded be helpful?
