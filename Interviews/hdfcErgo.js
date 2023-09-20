@@ -22,3 +22,4 @@
     // I had to again lie saying that we use infinite value as an expiry date 
 // Sass URL? - something new and I really didn't understand.
 // What is childProcess in node? then what is worker threads?
+// Why SQS and not rabbitmq? 
