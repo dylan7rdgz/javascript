@@ -63,7 +63,7 @@ class AreaCalculator {
 
     sum() {
         this.shapes.forEach(shape => {
-            if (shape instanceof ShapeInterface) {
+            if (shape instanceof ShapeInterface) { // Note that Cuboid may also have an area; so we write a wrapper over area in CUBOID as well as SQUARE over area and we call this calculate
                 this.areas.push(shape.area()); 
             } else {
                 throw Error('AreaCalculatorInvalidShapeException');
