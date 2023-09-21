@@ -50,7 +50,7 @@ console.log("property y in p is untouched (prototypes of an object remain unaffe
 
 
 /*
- NOTE* - there is one exception to the RULE* that a property assignment either fails or creates or sets a property in the original object
+ NOTE* - there is one exception to the RULE* that a property assignment either fails or creates/sets a property in the original object
  If o inherits the property x, and that property is an accessor property with a setter method,
  then that setter method is called rather than creating a new property x in o
 
