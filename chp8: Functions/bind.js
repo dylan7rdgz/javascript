@@ -3,7 +3,7 @@ function f(y) {
 } // This function needs to be bound
 let o = { x: 1 }; // An object we'll bind to
 let g = f.bind(o); // Calling g(x) invokes f() on o
-g(2); // => 3   //! CO* - Also check the name property of object g - the name function of the property returned by bind() is the name property of the function that bind() was called on, prefixed with the word "bound". - This helps in debugging effectively
+g(2); // => 3   //! CO* - Also check the name property of object g -  i.e. 'bound f' - This helps in debugging effectively
 let p = { x: 10, g }; // Invoke g() as a method of this object
 p.g(2); // => 3: g is still bound to o, not p.
 

@@ -17,7 +17,7 @@ console.log("s: ", s1.toString());
 let s2 = Symbol("sym_x");
 console.log("s2 ", s2);
 console.log("s: ", s2.toString());
-console.log("Symbols are not the same: " ,s1 === s2); // use case: a guarantee that your properties will never conflict with properties used by other code.
+console.log("Symbols are not the same: ", s1 === s2); // use case: a guarantee that your properties will never conflict with properties used by other code.
 
 let t1 = Symbol.for("sym_x");
 let t2 = Symbol.for("sym_x");

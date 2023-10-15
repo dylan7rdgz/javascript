@@ -7,5 +7,5 @@ for (let i = 0; i<3; i++) {
             firstName: "David",
             surname: "Flanagan"
         }
-    } // this object is valuated 3 times within the body of this for loop and hence obj will be created three times
+    } // this object is evaluated 3 times within the body of this for loop and hence obj will be created three times
 }
