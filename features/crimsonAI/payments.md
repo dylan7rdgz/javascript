@@ -92,6 +92,13 @@
     5. There is only one type of payment i.e card payment as the default payment type.
 
 ## Mistakes & Issues
+- Using npm run start was causing the application to stop once ssh gets disconnected.
+  This causes the system to work sometimes which is very difficult to debug.
+- not writing clean code causes lots of problems later while testing changes
+  Why write rubbish code and test and then again refactor code and then test.
+  Avoid a POC by writing experimental code, reading the document is the POC. There is no
+  need to write experimental code to feel comfortable, reading the document and imagaining an e2e 
+  solution is good enough
 
 # Discussion
     - No Basic plan when user signs up. [Leave it as it is].
@@ -117,15 +124,15 @@
                                 product: {Id of our Premium product}, PremiumCP in another line item
                                 product_data:
                                     name: Premium {Products name to be displayed to the customer}
-                                    description: 
+                                    description: quantity
                                     images:
                                     metadata: no need to attach a metadata object
                                     taxcode: not needed
-                                    unit amount/ unit_amount_decimal: how much to charge 
+                                    unit_amount/ unit_amount_decimal: how much to charge 
                                     recurring:
-                                        - interaval [billing frqeuncy - day, week, month, year] {we will use only month and year}
+                                        - interval [billing frequency - day, week, month, year] {we will use only month and year}
                                         - interval_count: just an alternative to interval with a different format
-                                    tax_behavior: no taxes. taxes are part og the prices we offer on enago read
+                                    tax_behavior: no taxes. taxes are part of the prices we offer on enago read
                                     quantity: should be 1
                                     adjustable_quantity: 
                                         enabled: 
@@ -166,5 +173,18 @@
             
 
         
+### Migration
+
+            [overalaping unexpected charge]
+    postpaid                                 prepaid
+
+    Basic Plan               ->              Basic Plan   
+    P  [monthly]             ->              P [monthly]  [annual]
+    PCP [monthly]            ->              PCP [monthly]
 
 
+
+# Learnings
+1. Never make an update such that we loose information
+2. What is Soft delete v/s Hard delete
+3. pm2 - quick start guide, 
