@@ -7,5 +7,5 @@ console.log("Global object supported by 'modern' Browsers and Node.js: ", global
 
 console.log("Global object supported by Browsers: ", Window);
 
-// web worker threads have a different global object than Window with which they are associated
+// web worker threads have a different global object than the Window with which they are associated
 // Code in a worker can refer to its global object as self.

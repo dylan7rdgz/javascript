@@ -13,7 +13,7 @@ class Point {
 }
 
 let pt = new Point(1, 1); // every time that your create an instance of a class with new, you are creating an object that inherits properties from a prototype object.
-console.log("distanceFromOrigin: ", pt.distance()); // distance is a property present in the prototype object: distance is the property k and the anonymous function would become the value
+console.log("distanceFromOrigin: ", pt.distance()); // distance is a property present in the prototype object: distance is the property key and the anonymous function would become the value
 
 //! NOTE: Remember, almost all objects have a prototype 
 //! but most do not have a property named prototype. 
