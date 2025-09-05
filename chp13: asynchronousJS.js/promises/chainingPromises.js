@@ -11,7 +11,7 @@ fetch("/api/user/profile")
     // ~ the response object also defines methods like text() and json()
     // ~ although the initial promise is fulfilled, the body of the response is STILL arriving
 
-    // ~ i.e. first we try to asynchronous establish a connection whereby the headers are easily accessible
+    // ~ i.e. first we try to asynchronously establish a connection whereby the headers are easily accessible
     // ~ .    then we are waiting for a promise to get fulfilled when the body data has been transmitted  
 
     // naive way of dealing with the promise. this nested way of dealing with it is beating the purpose of using promises and hence it beats the purpose

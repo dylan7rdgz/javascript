@@ -14,7 +14,7 @@
 
 // Explain current Architecture of Raxter? 
     // - I should have this architecture diagram ready to present to interviewers
-    // - I should know my architecture well. I was skeptical about the 
+    // - I should know my architecture well. I was skeptical about it. 
     // He asked me do you use Sass URL when you send the S3 Key to the AI Server
     // I said yes. Then he asked me how long does it take to get expired.
     // I said we do not add an expiry date

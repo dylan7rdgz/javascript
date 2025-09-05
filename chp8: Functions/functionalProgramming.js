@@ -1,5 +1,5 @@
 /*
- My style - Think of writing function definitions as helpers and within controller/service use RAD
+ My style - Think of writing function definitions as helpers and within controllers/services; use RAD
           - Think of writing highly generic functions in functional sense 
  
  */
@@ -17,7 +17,10 @@ add(3, 5)
 // arguments to f and returns the logical negation of f's return value;
 function not(f) {
     return function(...args) { // Return a new function
-        let result = f.apply(this, args); // that calls f //! CO* - JS has the ability to invoke a function on Global Context - as though the function is getting executed referring global scope data. i.e the same scope in which even got executed referring global data
+        let result = f.apply(this, args); // that calls f 
+        //! CO* - JS has the ability to invoke a function on Global Context -
+        //! as though the function is getting executed referring global scope data.
+        //! i.e the same scope in which even got executed referring global data
         return !result; // and negates its result.
     };
 }
@@ -75,7 +78,8 @@ partial(f, undefined, 2)(3, 4); // => -6: Bind middle argument: 3 * (2 - 4) i.e 
 
 //~ UC* - to avoid re-writing similar functions having tweaks 
 
-const increment = partialLeft(sum, 1); 
+const sum = (x, y) => x + y;
+const increment = partialLeft(sum, 1); //! CO* - INTERPRETATION - it's creating a new function with some of the arguments of the original function pre-filled. 
 const cuberoot = partialRight(Math.pow, 1/3); // arguments placed to sum are applied the sum function used them. Now, if we add the second argument as 1 then 
 cuberoot(increment(26)); // => 3
 

@@ -51,5 +51,5 @@ function c2(profile) {
 }
 
 let p1 = fetch("https://fiddle.jshell.net/robots.txt");
-let p2 = p1.then(c1);
+let p2 = p1.then(c1); // p2(p4)
 let p3 = p2.then(c2);
