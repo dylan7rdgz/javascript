@@ -69,7 +69,7 @@ let c = Object.create(b); // p inherits <o> as prototype which inherits <Object>
 c.x = 2;
 
 delete c.x; // if we delete property x from c, then the property x in a is retained
-delete c.x; // if x is not in c the interpreter will not search for another value x up the prototypical chain
+delete c.x; // if x is not in c the interpreter will not search for another value x up the prototypal chain
 delete a.x;
 
 
