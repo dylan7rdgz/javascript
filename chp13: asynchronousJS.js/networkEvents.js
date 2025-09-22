@@ -6,11 +6,11 @@ function getCurrentVersionNumber(versionCallback) { // Note callback argument
     request.open("GET", "http://www.example.com/api/version");
     request.send();
 
-    // request a callback function that will be invoked when the response arrives
+    // regiester a callback function that will be invoked when the response arrives
     request.onload = function() { // ALT* - request.addEventListener('onload', function())
         // onload is a property of the request object
         if (request.status === 200) {
-            // If HTTP status is good, get version number and callback.
+            // If HTTP status is good, get the version number and callback.
             let currentVersion = parseFloat(request.responseText);
             versionCallback(null, currentVersion);
         } else {

@@ -14,7 +14,7 @@ fetch("/api/user/profile")
     // ~ i.e. first we try to asynchronously establish a connection whereby the headers are easily accessible
     // ~ .    then we are waiting for a promise to get fulfilled when the body data has been transmitted  
 
-    // naive way of dealing with the promise. this nested way of dealing with it is beating the purpose of using promises and hence it beats the purpose
+    // naive way of dealing with the promise. this nested way of dealing with it is beating the purpose of using promises 
     // * NOTE: then only works on promises 
     response.json().then(profile => { // profile is the parsed json object
         displayUserProfile(profile);
